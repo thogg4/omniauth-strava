@@ -13,7 +13,7 @@ module OmniAuth
 
       def authorize_params
         super.tap do |params|
-          params[:approval_prompt] = 'force'
+          params[:approval_prompt] = 'auto'
         end
       end
 
@@ -27,8 +27,7 @@ module OmniAuth
         {
           first_name: athlete['firstname'],
           last_name: athlete['lastname'],
-          email: athlete['email'],
-          strava_id: access_token.token
+          email: athlete['email']
         }
       end
 
