@@ -20,6 +20,10 @@ module OmniAuth
       def request_phase
         super
       end
+
+      def callback_phase
+        super
+      end
       
       uid { access_token.token }
 
