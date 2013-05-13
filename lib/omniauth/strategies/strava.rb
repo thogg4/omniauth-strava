@@ -23,11 +23,21 @@ module OmniAuth
       
       uid { access_token.token }
 
+      extra do
+        {
+          recent_ride_totals: athlete['recent_ride_totals'],
+          ytd_ride_totals: athlete['ytd_ride_totals'],
+          all_ride_totals: athlete['all_ride_totals']
+        }
+      end
+
       info do
         {
+          name: "#{athlete['firstname']} #{athlete['lastname']}",
           first_name: athlete['firstname'],
           last_name: athlete['lastname'],
-          email: athlete['email']
+          email: athlete['email'],
+          location: "#{athlete['city']} #{athlete['state']}"
         }
       end
 
