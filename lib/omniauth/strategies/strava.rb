@@ -31,7 +31,8 @@ module OmniAuth
         {
           recent_ride_totals: athlete['recent_ride_totals'],
           ytd_ride_totals: athlete['ytd_ride_totals'],
-          all_ride_totals: athlete['all_ride_totals']
+          all_ride_totals: athlete['all_ride_totals'],
+          raw_info: athlete
         }
       end
 
