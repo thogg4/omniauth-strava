@@ -25,7 +25,7 @@ module OmniAuth
         super
       end
       
-      uid { access_token.token }
+      uid { "#{athlete['id']}" }
 
       extra do
         {
