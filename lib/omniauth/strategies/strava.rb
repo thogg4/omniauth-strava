@@ -43,7 +43,8 @@ module OmniAuth
           first_name: athlete['firstname'],
           last_name: athlete['lastname'],
           email: athlete['email'],
-          location: "#{athlete['city']} #{athlete['state']}"
+          location: "#{athlete['city']} #{athlete['state']}",
+          image: athlete['profile']
         }
       end
 
