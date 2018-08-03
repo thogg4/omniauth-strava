@@ -10,11 +10,21 @@ module OmniAuth
         :authorize_url => 'https://www.strava.com/oauth/authorize',
         :token_url => 'https://www.strava.com/oauth/token'
       }
+
+      # The requested scopes of the eventual token, as a comma delimited string of `view_private` and/or `write`. By default, applications can only view a user’s public data. The scope parameter can be used to request more access. It is recommended to only requested the minimum amount of access necessary.
+      # `public`: default, private activities are not returned, privacy zones are respected in stream requests.
+      # `write`: modify activities, upload on the user’s behalf.
+      # `view_private`: view private activities and data within privacy zones.
+      # `view_private,write`:both ‘view_private’ and ‘write’ access.
       option :scope, 'public'
+
+      # `force` or `auto`, use `force` to always show the authorization prompt even if the user has already authorized the current application, default is ‘auto’.
+      option :approval_prompt, 'auto' # 
 
       def authorize_params
         super.tap do |params|
-          params[:approval_prompt] = 'auto'
+          params[:approval_prompt] = params['approval_prompt'].presence || 'auto'
+          params[:scopre] = params['scope'].presence || 'public'
         end
       end
 
