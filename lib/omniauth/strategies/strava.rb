@@ -12,6 +12,13 @@ module OmniAuth
       }
       option :scope, 'read'
 
+      def token_params
+        super.tap do |params|
+          params[:client_id] = options[:client_id]
+          params[:client_secret] = options[:client_secret]
+        end
+      end
+
       def authorize_params
         super.tap do |params|
           params[:approval_prompt] = 'auto'
